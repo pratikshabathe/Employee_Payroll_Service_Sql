@@ -1,4 +1,4 @@
-UC1 - Create a payroll service database
+UC1 :- Create a payroll service database
 
 mysql> create database payroll_service;
 Query OK, 1 row affected (2.12 sec)
@@ -17,6 +17,8 @@ mysql> show databases;
 
 mysql> use payroll_service;
 Database changed
+
+UC2 :- create table employee payroll in payroll service database
 mysql>  create table employee_payroll(
     -> id int unsigned not null auto_increment,
     -> name varchar(100) not null,
@@ -35,3 +37,8 @@ mysql> desc employee_payroll;
 | start_date | date         | NO   |     | NULL    |                |
 +------------+--------------+------+-----+---------+----------------+
 4 rows in set (0.42 sec)
+
+UC3 :- Create employee payroll data in payroll service database as part of CURD operation
+mysql> insert into employee_payroll(name, salary, start_date)values('Bill', 1000000.00, '2010-10-30'),('Tersia',2000000.00, '2019-11-13'), ('Charlie', 3000000.00, '2020-05-21');
+Query OK, 3 rows affected (0.70 sec)
+Records: 3  Duplicates: 0  Warnings: 0
