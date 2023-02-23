@@ -209,3 +209,43 @@ mysql> desc employee_payroll;
 | start_date   | date         | NO   |     | NULL    |                |
 +--------------+--------------+------+-----+---------+----------------+
 8 rows in set (0.20 sec)
+
+UC9 :- Extend employee payroll table to have basic pay , deductions , taxable pay, income tax, net pay
+mysql> alter table employee_payroll rename column salary to basic_pay;
+Query OK, 0 rows affected (0.71 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------------+---------+------------+--------+-----------+------------+
+| id | name    | phone_number | address | department | gender | basic_pay | start_date |
++----+---------+--------------+---------+------------+--------+-----------+------------+
+|  1 | Bill    | NULL         | NULL    |            | M      |   1000000 | 2010-10-30 |
+|  2 | Tersia  | NULL         | NULL    |            | F      |   2000000 | 2019-11-13 |
+|  3 | Charlie | NULL         | NULL    |            | M      |   3000000 | 2020-05-21 |
++----+---------+--------------+---------+------------+--------+-----------+------------+
+3 rows in set (0.00 sec)
+mysql> alter table employee_payroll add deductions double not null after basic_pay;
+Query OK, 0 rows affected (0.37 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll add taxable_pay double not null after deductions;
+Query OK, 0 rows affected (0.13 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll add tax double not null after taxable_pay;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table employee_payroll add net_pay double not null after tax;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee_payroll;
++----+---------+--------------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+| id | name    | phone_number | address | department | gender | basic_pay | deductions | taxable_pay | tax | net_pay | start_date |
++----+---------+--------------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+|  1 | Bill    | NULL         | NULL    |            | M      |   1000000 |          0 |           0 |   0 |       0 | 2010-10-30 |
+|  2 | Tersia  | NULL         | NULL    |            | F      |   2000000 |          0 |           0 |   0 |       0 | 2019-11-13 |
+|  3 | Charlie | NULL         | NULL    |            | M      |   3000000 |          0 |           0 |   0 |       0 | 2020-05-21 |
++----+---------+--------------+---------+------------+--------+-----------+------------+-------------+-----+---------+------------+
+3 rows in set (0.00 sec)
