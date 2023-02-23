@@ -42,3 +42,15 @@ UC3 :- Create employee payroll data in payroll service database as part of CURD 
 mysql> insert into employee_payroll(name, salary, start_date)values('Bill', 1000000.00, '2010-10-30'),('Tersia',2000000.00, '2019-11-13'), ('Charlie', 3000000.00, '2020-05-21');
 Query OK, 3 rows affected (0.70 sec)
 Records: 3  Duplicates: 0  Warnings: 0
+
+UC4 :- Retrive all employee payroll data from employee payroll teble
+mysql> select * from employee_payroll
+    -> ;
++----+---------+---------+------------+
+| id | name    | salary  | start_date |
++----+---------+---------+------------+
+|  1 | Bill    | 1000000 | 2010-10-30 |
+|  2 | Tersia  | 2000000 | 2019-11-13 |
+|  3 | Charlie | 3000000 | 2020-05-21 |
++----+---------+---------+------------+
+3 rows in set (0.03 sec)
