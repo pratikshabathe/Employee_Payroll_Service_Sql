@@ -54,3 +54,22 @@ mysql> select * from employee_payroll
 |  3 | Charlie | 3000000 | 2020-05-21 |
 +----+---------+---------+------------+
 3 rows in set (0.03 sec)
+
+UC5 :- Retrieve salary data for particular employee as well as employee particular data range
+mysql> select salary from employee_payroll where name = 'Bill'
+    -> ;
++---------+
+| salary  |
++---------+
+| 1000000 |
++---------+
+1 row in set (0.08 sec)
+
+mysql> select start_date from employee_payroll where start_date between cast('2018-01-01' as date) and date(now());
++------------+
+| start_date |
++------------+
+| 2019-11-13 |
+| 2020-05-21 |
++------------+
+2 rows in set (0.10 sec)
