@@ -1,0 +1,19 @@
+UC1 - Create a payroll service database
+
+mysql> create database payroll_service;
+Query OK, 1 row affected (2.12 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.59 sec)
+
+mysql> use payroll_service;
+Database changed
